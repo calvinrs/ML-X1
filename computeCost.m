@@ -13,6 +13,11 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+H = X * theta; %evaluated hypothesis function 
+D = H - y; %diff versus observed
+DSq = D .* D; %squared diff
+S = sum(DSq); %sum of squares
+J = S/(2*m); %mean squares (with *2 for luck)
 
 
 
