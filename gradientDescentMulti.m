@@ -19,12 +19,12 @@ for iter = 1:num_iters
 
 
 
-
-
-
-
-
-
+H = X * theta; %evaluated hypothesis function 
+D = H - y; %diff versus observed
+thetaChange = (alpha/m)*(X' * D); % sum of "delta" times x for each x in X
+%update theta
+thetaNew = theta - thetaChange;
+theta = thetaNew;
 
 
     % ============================================================

@@ -27,12 +27,22 @@ sigma = zeros(1, size(X, 2));
 %       
 
 
+mu = mean(X);
+sigma = std(X);
+XminusMu = X - mu;
 
+% need to avoid division by zero
+%for i = 1:size(X,2)
+%  if sigma(1,i) == 0
+%    X_norm(:,i) = X(:,i) ;
+%  else
+%    X_norm(:,i) = XminusMu(:,i) ./ sigma(:,i);
+%  end;
+%end;
 
+%safeSigma = [1 sigma(:,2) sigma(:,3)];
 
-
-
-
+X_norm = XminusMu ./ sigma;
 
 % ============================================================
 
