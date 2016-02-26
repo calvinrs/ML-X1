@@ -17,17 +17,25 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-
-
-
-
+H = X * theta; %evaluated hypothesis function 
+D = H - y; %diff versus observed
+thetaChange = (alpha/m)*(X' * D); % sum of "delta" times x for each x in X
+%update theta
+thetaNew = theta - thetaChange;
+theta = thetaNew;
 
 
     % ============================================================
 
     % Save the cost J in every iteration    
     J_history(iter) = computeCost(X, y, theta);
-
+    
+    %debug print
+%    fprintf('New theta value: \n');
+%    theta
+%    fprintf('Cost function value:: \n');
+%    J_history(iter) 
+%    pause;
 end
 
 end
