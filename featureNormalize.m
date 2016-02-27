@@ -29,8 +29,15 @@ sigma = zeros(1, size(X, 2));
 
 mu = mean(X);
 sigma = std(X);
-XminusMu = X - mu;
+% this next bit is more complicated in matlab
+%XminusMu = X - mu; % applies in octave
+%for matlab, we need
+muExp = ones(size(X,1), 1)* mu;
+XminusMu = X - muExp;
 
+%same with sigma?
+sigmaExp = ones(size(X,1), 1)* sigma;
+X_norm = XminusMu ./ sigmaExp;
 % need to avoid division by zero
 %for i = 1:size(X,2)
 %  if sigma(1,i) == 0
@@ -42,7 +49,7 @@ XminusMu = X - mu;
 
 %safeSigma = [1 sigma(:,2) sigma(:,3)];
 
-X_norm = XminusMu ./ sigma;
+%X_norm = XminusMu ./ sigma;
 
 % ============================================================
 
